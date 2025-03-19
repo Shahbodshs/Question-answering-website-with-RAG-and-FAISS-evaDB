@@ -197,6 +197,8 @@ Replace `BACKEND_URL` with your actual local backend address when running locall
 
 You can use Visual studio code live server to run the project by first __Running the backend file first__ and then by right clicking on html file select the __Create live server__. 
 remember you need to install the live server extention first in the Vs code extention library.  
+Then try to run the backend.py first and then run the html file.
+
 ---
 
 ## **Results**
