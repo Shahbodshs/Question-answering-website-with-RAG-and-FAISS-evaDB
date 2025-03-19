@@ -154,5 +154,5 @@ Below is an example of a generated response displayed on the website.
 
 
 As you can see the model was capable of answering the questions where the informations were already provided in the database, and it could even understand typos, but the last prompt was out of its knowledge and responded i dont know. 
----
+
 
