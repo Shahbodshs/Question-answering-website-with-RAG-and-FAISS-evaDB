@@ -61,6 +61,59 @@ This function collects responses from different sources and **aggregates** them 
 
 ### **2. Subquestion.py**
 This module is responsible for **breaking down** complex user questions into simpler subquestions. These subquestions are then answered separately before being aggregated into a final response.
+In this section few shot promting is used to teach the LLM how to parse requests into simpler questions and decide which function to use for response. 
+```json
+        few_shot_examples = [
+            {
+                "role": "user",
+                "content": "Compare the population of Atlanta and Toronto?",
+            },
+            {
+                "role": "function",
+                "name": "SubQuestionBundleList",
+                "content": """
+                {
+                    "subquestion_bundle_list": [
+                        {
+                            "question": "What is the population of Atlanta?",
+                            "function": "vector_retrieval",
+                            "file_name": "Atlanta"
+                        },
+                        {
+                            "question": "What is the population of Toronto?",
+                            "function": "vector_retrieval",
+                            "file_name": "Toronto"
+                        }
+                    ]
+                }"""
+            },
+            {
+                "role": "user",
+                "content": "Summarize the history of Chicago and Houston.",
+            },
+            {
+                "role": "function",
+                "name": "SubQuestionBundleList",
+                "content": """
+                {
+                    "subquestion_bundle_list": [
+                        {
+                            "question": "What is the history of Chicago?",
+                            "function": "llm_retrieval",
+                            "file_name": "Chicago"
+                        },
+                        {
+                            "question": "What is the history of Houston?",
+                            "function": "llm_retrieval",
+                            "file_name": "Houston"
+                        }
+                    ]
+                }"""
+            }
+        ]
+        user_prompt += "\nFew-shot examples:\n" + json.dumps(few_shot_examples, indent=2)
+        user_prompt += "\nPlease output your answer as valid JSON. Ensure that the 'file_name' field is one of the following exactly: 'Toronto', 'Chicago', 'Houston', 'Boston', 'Atlanta'."
+```
 
 ---
 
