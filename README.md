@@ -63,7 +63,7 @@ This function collects responses from different sources and **aggregates** them 
 This module is responsible for **breaking down** complex user questions into simpler subquestions. These subquestions are then answered separately before being aggregated into a final response.
 In this section few shot promting is used to teach the LLM how to parse requests into simpler questions and decide which function to use for response. 
 ```json
-        few_shot_examples = [
+
             {
                 "role": "user",
                 "content": "Compare the population of Atlanta and Toronto?",
@@ -111,8 +111,7 @@ In this section few shot promting is used to teach the LLM how to parse requests
                 }"""
             }
         ]
-        user_prompt += "\nFew-shot examples:\n" + json.dumps(few_shot_examples, indent=2)
-        user_prompt += "\nPlease output your answer as valid JSON. Ensure that the 'file_name' field is one of the following exactly: 'Toronto', 'Chicago', 'Houston', 'Boston', 'Atlanta'."
+
 ```
 
 ---
