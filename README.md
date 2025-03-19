@@ -64,53 +64,53 @@ This module is responsible for **breaking down** complex user questions into sim
 In this section few shot promting is used to teach the LLM how to parse requests into simpler questions and decide which function to use for response. 
 ```json
 
+{
+    "role": "user",
+    "content": "Compare the population of Atlanta and Toronto?",
+},
+{
+    "role": "function",
+    "name": "SubQuestionBundleList",
+    "content": """
+    {
+        "subquestion_bundle_list": [
             {
-                "role": "user",
-                "content": "Compare the population of Atlanta and Toronto?",
+                "question": "What is the population of Atlanta?",
+                "function": "vector_retrieval",
+                "file_name": "Atlanta"
             },
             {
-                "role": "function",
-                "name": "SubQuestionBundleList",
-                "content": """
-                {
-                    "subquestion_bundle_list": [
-                        {
-                            "question": "What is the population of Atlanta?",
-                            "function": "vector_retrieval",
-                            "file_name": "Atlanta"
-                        },
-                        {
-                            "question": "What is the population of Toronto?",
-                            "function": "vector_retrieval",
-                            "file_name": "Toronto"
-                        }
-                    ]
-                }"""
-            },
-            {
-                "role": "user",
-                "content": "Summarize the history of Chicago and Houston.",
-            },
-            {
-                "role": "function",
-                "name": "SubQuestionBundleList",
-                "content": """
-                {
-                    "subquestion_bundle_list": [
-                        {
-                            "question": "What is the history of Chicago?",
-                            "function": "llm_retrieval",
-                            "file_name": "Chicago"
-                        },
-                        {
-                            "question": "What is the history of Houston?",
-                            "function": "llm_retrieval",
-                            "file_name": "Houston"
-                        }
-                    ]
-                }"""
+                "question": "What is the population of Toronto?",
+                "function": "vector_retrieval",
+                "file_name": "Toronto"
             }
         ]
+    }"""
+},
+{
+    "role": "user",
+    "content": "Summarize the history of Chicago and Houston.",
+},
+{
+    "role": "function",
+    "name": "SubQuestionBundleList",
+    "content": """
+    {
+        "subquestion_bundle_list": [
+            {
+                "question": "What is the history of Chicago?",
+                "function": "llm_retrieval",
+                "file_name": "Chicago"
+            },
+            {
+                "question": "What is the history of Houston?",
+                "function": "llm_retrieval",
+                "file_name": "Houston"
+            }
+        ]
+    }"""
+}
+
 
 ```
 
