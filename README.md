@@ -195,6 +195,8 @@ fetch(`${BACKEND_URL}/ask`, {
 ```
 Replace `BACKEND_URL` with your actual local backend address when running locally.
 
+You can use Visual studio code live server to run the project by first __Running the backend file first__ and then by right clicking on html file select the __Create live server__. 
+remember you need to install the live server extention first in the Vs code extention library.  
 ---
 
 ## **Results**
