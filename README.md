@@ -15,7 +15,7 @@ The main modifications in this project compared to the original RAG implementati
 
 Original inspiration: [pchunduri6/rag-demystified](https://github.com/pchunduri6/rag-demystified)
 
-The only problem for me was that the user waas trying to use premium API's for his project, i wanted to implement a few changes because of that.
+The only problem for me was that the original user was trying to use premium API's for his project, i wanted to implement a few changes because of that.
 
 ---
 
